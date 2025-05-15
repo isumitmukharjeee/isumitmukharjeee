@@ -1,0 +1,17 @@
+name: ✍️ Latest Hashnode Blogs
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    name: Update README with latest blogs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch latest Hashnode articles
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://developersgo.hashnode.dev/rss.xml"
